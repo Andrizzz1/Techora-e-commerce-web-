@@ -31,24 +31,21 @@ const ShopOptionsData: OptionData[] = [
 
 export const NavBar = () => {
   const [activeMenu, setActiveMenu] = useState(false);
+  const [selectedNav, setSelectedNav] = useState('home')
   return (
-    <>  
-
-            <div
-      className={`fixed inset-0 z-40 bg-black/10 backdrop-blur-sm
+    <>
+      <div
+        className={`fixed inset-0 z-40 bg-black/10 backdrop-blur-sm
         transition-opacity duration-300
-        ${activeMenu
-          ? "opacity-100"
-          : "pointer-events-none opacity-0"
-        }`}
-      onClick={() => setActiveMenu(false)}
-    />
+        ${activeMenu ? "opacity-100" : "pointer-events-none opacity-0"}`}
+        onClick={() => setActiveMenu(false)}
+      />
 
       <div className="relative shadow-md z-50 bg-[#F5F5F7] flex justify-around text-xs max-md:hidden">
-        <img className="w-15" src="./imgs/logo.png" alt="" />
+        <img className="w-15" src="./imgs/logo.png" alt="logo" />
         {/*options */}
         <div className="flex items-center gap-10">
-          <p className="cursor-pointer">HOME</p>
+          <p onClick={()=>setSelectedNav("home")} className={`cursor-pointer ${selectedNav === "home"? "text-blue-600 underline underline-offset-4 ":null}`}>HOME</p>
           <p
             className="cursor-pointer"
             onMouseEnter={() => setActiveMenu(true)}
@@ -71,10 +68,11 @@ export const NavBar = () => {
 
         <div
           className={`absolute left-0 top-full w-full h-20 items-center bg-[#F5F5F7] flex justify-around transition-all duration-300
-                ${activeMenu
-      ? "translate-y-0 opacity-100 shadow-md pointer-events-auto"
-      : "-translate-y-2 opacity-0 pointer-events-none"
-    }
+                ${
+                  activeMenu
+                    ? "translate-y-0 opacity-100 shadow-md pointer-events-auto"
+                    : "-translate-y-2 opacity-0 pointer-events-none"
+                }
   `}
           onMouseLeave={() => setActiveMenu(false)}
         >
