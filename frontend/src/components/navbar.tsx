@@ -9,11 +9,11 @@ type OptionData = {
 const ShopOptionsData: OptionData[] = [
   {
     id: 1,
-    title: "Laptops",
+    title: "Gaming",
   },
   {
     id: 2,
-    title: "Monitors",
+    title: "Wearables",
   },
   {
     id: 3,
