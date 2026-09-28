@@ -18,6 +18,12 @@ type service ={
     logo: ReactNode
 }
 
+type ProductItems={
+    name: string,
+    Image: string,
+    price: number  
+}
+
 type newDeal ={
     product_id:number,
     title:string,
@@ -69,6 +75,18 @@ const categories = [
 ];
 
 
+const iphonedealItems:ProductItems[] = [
+    {name:"Iphone 17", Image:"/imgs/products/iphone17.png",price:69990},
+    {name:"Iphone 16(Pink)", Image:"/imgs/products/Iphone16_Pink.png",price:48490},
+    {name:"Iphone 16 Pro", Image:"/imgs/products/Iphone16_pro.png",price:78990},
+    {name:"Iphone 15 Pro", Image:"/imgs/products/Iphone_15_pro.png",price:36990},
+    {name:"Iphone 15", Image:"/imgs/products/Iphone_15.png",price:31790},
+    {name:"Iphone 17 Pro", Image:"/imgs/products/Iphone_17_pro.jpg",price:96790},
+    {name:"Iphone 14 Pro", Image:"/imgs/products/Iphone_14_Pro.png",price:32290},
+    {name:"Iphone 11 Pro", Image:"/imgs/products/Iphone_11_Pro.png",price:25014},
+    {name:"Iphone 11", Image:"/imgs/products/Iphone_11.png",price:15300},
+    {name:"Iphone 13", Image:"/imgs/products/Iphone_13.png",price:20700},
+]
 
 export const LandingPage =()=>{
     const mainRef=useRef(null)
@@ -234,7 +252,8 @@ export const LandingPage =()=>{
         )}
     </div>
     
-    <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-1 mt-15">
+    <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-1 mt-15
+                     w-full max-w-7xl mx-auto">
         {newDeals.map((deal)=>(
             <DealsofTheDay 
                 sourceImg={deal.image_url} 
@@ -247,5 +266,55 @@ export const LandingPage =()=>{
     </div>
 </div>
 
+<hr className="text-gray-300  w-full max-w-7xl mx-auto mt-20"/>
+
+{/*Latest iphone deals */}
+<p className="text-2xl font-bold mt-20   w-full max-w-7xl mx-auto">Latest iphone Deals</p>
+<p className="text-gray-500 w-full max-w-7xl mx-auto mb-5 text-xs">Grab the newest iPhone models at exclusive prices</p>
+<div className="grid grid-cols-4 w-full max-w-7xl mx-auto ">
+    <div className="col-span-1">
+        <img className="rounded-sm" src="/imgs/iphoneDeals_ad.png" alt="iphone ad" />
+    </div>
+    <div className="col-span-3 ml-10 flex flex-wrap">
+        {iphonedealItems.map((item,i)=>(
+            <div key={i} className="text-center bg-white 
+                        h-56 w-44 mx-1 my-1 
+                        flex flex-col items-center justify-center 
+                        cursor-pointer rounded-sm shadow-md
+                        hover:scale-105 transition-all duration-600 ">
+                <img className="w-28" src={item.Image} alt={item.name}/>
+                <p className="text-sm">{item.name}</p>
+                <p className="font-semibold">₱{item.price}</p>
+            </div>
+
+        ))
+        }
+     
+    </div>
+</div>
+
+{/*Latest iphone deals */}
+<p className="text-2xl font-bold mt-20   w-full max-w-7xl mx-auto">Top Picks For You</p>
+<p className="text-gray-500 w-full max-w-7xl mx-auto mb-5 text-xs">Grab the newest iPhone models at exclusive prices</p>
+<div className="grid grid-cols-4 w-full max-w-7xl mx-auto ">
+    <div className="col-span-3 mr-10 flex flex-wrap">
+        {iphonedealItems.map((item,i)=>(
+            <div key={i} className="text-center bg-white 
+                                    h-56 w-44 mx-1 my-1 
+                                    flex flex-col items-center justify-center 
+                                    cursor-pointer rounded-sm shadow-md
+                                    hover:scale-105 transition-all duration-600 ">
+                <img className="w-28" src={item.Image} alt={item.name}/>
+                <p className="text-sm">{item.name}</p>
+                <p className="font-semibold">₱{item.price}</p>
+            </div>
+
+        ))
+        }
+    </div>
+    <div className="col-span-1">
+        <img className="rounded-sm" src="/imgs/TopPicksAd.png" alt="Mousead" />
+    </div>
+</div>
 </main>
 }

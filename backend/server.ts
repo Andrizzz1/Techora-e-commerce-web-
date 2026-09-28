@@ -26,6 +26,9 @@ let dealsExpireAt = 0;
 
 const DEAL_DURATION = 24 * 60 * 60 * 1000;
 
+// app.get('products',async(req,res)=>{
+
+// })
 
 app.get('/RefreshDeals',async (req,res)=>{
     const discountPercent = 60;

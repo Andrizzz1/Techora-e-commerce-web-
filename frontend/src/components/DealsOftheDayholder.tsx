@@ -9,8 +9,10 @@ type Deals={
 export function DealsofTheDay({sourceImg,altimg,title,OriginalPrice,discountedPrice}:Deals){
     return<>
         <div className="flex gap-2 max-md:grid max-md:grid-cols-1 cursor-pointer 
-                        hover:scale-120 rounded-2xl mx-5 hover:shadow-2xl
-                        p-1 transition-all duration-300 ">
+                        hover:scale-105 rounded-2xl mx-5 hover:shadow-2xl
+                        p-1 transition-all duration-600 
+                        hover:bg-white
+                        ">
             <div className="col-span-3 flex items-center justify-center">
                 <img className="max-h-72  " src={sourceImg} alt={altimg} />
             </div>
