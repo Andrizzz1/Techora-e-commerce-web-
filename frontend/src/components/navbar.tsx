@@ -47,13 +47,15 @@ export const NavBar = () => {
         <div className="flex items-center gap-10">
           <p onClick={()=>setSelectedNav("home")} className={`cursor-pointer ${selectedNav === "home"? "text-blue-600 underline underline-offset-4 ":null}`}>HOME</p>
           <p
-            className="cursor-pointer"
+            className="cursor-pointer hover:text-blue-600"
             onMouseEnter={() => setActiveMenu(true)}
           >
             Shop
           </p>
-          <p className="cursor-pointer">Order Track</p>
-          <p className="cursor-pointer">Wishlist</p>
+          <p className="cursor-pointer 
+                        hover:text-blue-600" >Order Track</p>
+          <p className="cursor-pointer
+                        hover:text-blue-600">Wishlist</p>
         </div>
 
         <div className="flex items-center gap-5">
@@ -80,7 +82,7 @@ export const NavBar = () => {
             <p
               key={data.id}
               className={`mb-4 text-sm text-black transition-all duration-300 ease-out
-        cursor-pointer
+              cursor-pointer hover:text-blue-600
         ${
           activeMenu
             ? "translate-y-0 opacity-100 blur-0"

@@ -4,3 +4,17 @@ body{
     margin: 0;
     background-color: #F5F5F7;
 }
+
+@keyframes marquee {
+  from {
+    transform: translateX(-65%);
+  }
+
+  to {
+    transform: translateX(65%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}

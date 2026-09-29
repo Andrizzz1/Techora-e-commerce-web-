@@ -162,6 +162,7 @@ export const LandingPage =()=>{
      <CategoryCarousel categories={categories} onSelect={(name) => console.log(name)} />
 </div>
 
+<hr className="text-gray-300  w-full max-w-7xl mx-auto mt-20"/>
 
 {/*For the 3d model section */}
 <div ref={sceneRef} className="relative h-screen ">
@@ -192,8 +193,8 @@ export const LandingPage =()=>{
 </div>
 
 {/*Welcome to Techora */}
-<div className="bg-blue-500 text-xs w-full max-w-7xl mx-auto my-10 min-h-5 text-center text-white md:rounded-sm">
-    <p className="p-2"><span className="font-semibold">Welcome to techora</span> Wrap new offers / gift every single day on weekends</p>
+<div className="bg-blue-500 text-xs w-full max-w-7xl mx-auto my-10 min-h-5 text-center text-white md:rounded-sm overflow-hidden ">
+    <p className="p-2 animate-marquee"><span className="font-semibold">Welcome to techora</span> Wrap new offers / gift every single day on weekends</p>
 </div>
 
 {/*Deals of the day/Refresh everyDay */}
@@ -269,19 +270,24 @@ export const LandingPage =()=>{
 <hr className="text-gray-300  w-full max-w-7xl mx-auto mt-20"/>
 
 {/*Latest iphone deals */}
-<p className="text-2xl font-bold mt-20   w-full max-w-7xl mx-auto">Latest iphone Deals</p>
-<p className="text-gray-500 w-full max-w-7xl mx-auto mb-5 text-xs">Grab the newest iPhone models at exclusive prices</p>
-<div className="grid grid-cols-4 w-full max-w-7xl mx-auto ">
-    <div className="col-span-1">
+<p className="max-sm:ml-8 md:text-center lg:text-left text-2xl font-bold mt-20 w-full max-w-7xl md:mx-auto">Latest iphone Deals</p>
+<p className="max-sm:ml-8 md:text-center lg:text-left text-gray-500 w-full max-w-7xl mx-auto mb-5 text-xs">Grab the newest iPhone models at exclusive prices</p>
+<div className="flex flex-col lg:grid md:grid-cols-4 w-full max-w-7xl mx-auto ">
+    <div className="col-span-1 max-lg:hidden ">
         <img className="rounded-sm" src="/imgs/iphoneDeals_ad.png" alt="iphone ad" />
     </div>
-    <div className="col-span-3 ml-10 flex flex-wrap">
+    <div className="col-span-3 md:ml-10 flex flex-wrap 
+                    max-lg:mt-10 max-sm:gap-3 justify-center 
+                    max-md:grid max-md:grid-cols-2 max-lg:px-4">
         {iphonedealItems.map((item,i)=>(
             <div key={i} className="text-center bg-white 
-                        h-56 w-44 mx-1 my-1 
+                        h-56 md:w-44 md:mx-1 my-1 
                         flex flex-col items-center justify-center 
                         cursor-pointer rounded-sm shadow-md
-                        hover:scale-105 transition-all duration-600 ">
+                        hover:scale-105 transition-all duration-600 
+                        w-full max-w-7xl mx-auto
+                        
+                        ">
                 <img className="w-28" src={item.Image} alt={item.name}/>
                 <p className="text-sm">{item.name}</p>
                 <p className="font-semibold">₱{item.price}</p>
@@ -293,17 +299,25 @@ export const LandingPage =()=>{
     </div>
 </div>
 
+<hr className="text-gray-300  w-full max-w-7xl mx-auto mt-20"/>
 {/*Latest iphone deals */}
-<p className="text-2xl font-bold mt-20   w-full max-w-7xl mx-auto">Top Picks For You</p>
-<p className="text-gray-500 w-full max-w-7xl mx-auto mb-5 text-xs">Grab the newest iPhone models at exclusive prices</p>
-<div className="grid grid-cols-4 w-full max-w-7xl mx-auto ">
-    <div className="col-span-3 mr-10 flex flex-wrap">
+
+<p className="max-sm:ml-8 text-2xl font-bold mt-20 
+              md:text-center lg:text-left w-full max-w-7xl mx-auto">Top Picks For You</p>
+<p className="max-sm:ml-8 md:text-center text-gray-500 
+                w-full max-w-7xl mx-auto mb-5 text-xs
+                lg:text-left">Grab the newest iPhone models at exclusive prices</p>
+<div className="flex flex-col lg:grid md:grid-cols-4 w-full max-w-7xl mx-auto ">
+    <div className="col-span-3 md:mr-10 flex flex-wrap 
+                    max-sm:mt-10 max-sm:gap-3 justify-center
+                    max-md:grid max-md:grid-cols-2 max-lg:px-4">
         {iphonedealItems.map((item,i)=>(
             <div key={i} className="text-center bg-white 
-                                    h-56 w-44 mx-1 my-1 
+                                     h-56 md:w-44 md:mx-1 my-1
                                     flex flex-col items-center justify-center 
                                     cursor-pointer rounded-sm shadow-md
-                                    hover:scale-105 transition-all duration-600 ">
+                                    hover:scale-105 transition-all duration-600 
+                                    w-full max-w-7xl mx-auto">
                 <img className="w-28" src={item.Image} alt={item.name}/>
                 <p className="text-sm">{item.name}</p>
                 <p className="font-semibold">₱{item.price}</p>
@@ -312,9 +326,323 @@ export const LandingPage =()=>{
         ))
         }
     </div>
-    <div className="col-span-1">
+    <div className="col-span-1  max-lg:hidden ">
         <img className="rounded-sm" src="/imgs/TopPicksAd.png" alt="Mousead" />
     </div>
 </div>
+
+
+
+{/* Build Your Setup */}
+<section className="w-full max-w-7xl mx-auto mt-24 px-4 sm:px-6 lg:px-0">
+
+    {/* Section Header */}
+    <div className="mb-8">
+        <p className="text-xs font-semibold tracking-[0.2em] text-blue-500 uppercase">
+            Curated For You
+        </p>
+
+        <h2 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight">
+            Build Your Setup.
+        </h2>
+
+        <p className="mt-2 text-sm text-gray-500 max-w-xl">
+            Discover the essentials to create a setup that works,
+            sounds, and looks exactly the way you want.
+        </p>
+    </div>
+
+    {/* Collection Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        {/* Work Smarter */}
+        <div className="
+            group relative overflow-hidden
+            min-h-[380px]
+            rounded-3xl
+            border border-gray-200
+            bg-gray-50
+            cursor-pointer
+            transition-all duration-500
+            hover:shadow-xl
+            hover:-translate-y-1
+        ">
+            <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+
+                <div>
+                    <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">
+                        Laptops
+                    </p>
+
+                    <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                        Work Smarter.
+                    </h3>
+
+                    <p className="mt-2 text-sm text-gray-500 max-w-[220px]">
+                        Powerful devices for productivity, study, and everyday work.
+                    </p>
+                </div>
+
+                <div className="
+                    w-10 h-10
+                    rounded-full
+                    bg-white
+                    border border-gray-200
+                    flex items-center justify-center
+                    text-lg
+                    transition-transform duration-300
+                    group-hover:translate-x-1
+                ">
+                    →
+                </div>
+            </div>
+
+            <img
+                src={categories[1].image}
+                alt={categories[1].name}
+                className="
+                    absolute
+                    w-[75%]
+                    right-[-5%]
+                    bottom-[-2%]
+                    object-contain
+                    transition-transform duration-700
+                    group-hover:scale-110
+                "
+            />
+        </div>
+
+
+        {/* Audio */}
+        <div className="
+            group relative overflow-hidden
+            min-h-[380px]
+            rounded-3xl
+            border border-gray-200
+            bg-gray-50
+            cursor-pointer
+            transition-all duration-500
+            hover:shadow-xl
+            hover:-translate-y-1
+        ">
+            <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+
+                <div>
+                    <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">
+                        Audio
+                    </p>
+
+                    <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                        Hear More.
+                    </h3>
+
+                    <p className="mt-2 text-sm text-gray-500 max-w-[220px]">
+                        Immersive sound for music, gaming, and everything in between.
+                    </p>
+                </div>
+
+                <div className="
+                    w-10 h-10
+                    rounded-full
+                    bg-white
+                    border border-gray-200
+                    flex items-center justify-center
+                    text-lg
+                    transition-transform duration-300
+                    group-hover:translate-x-1
+                ">
+                    →
+                </div>
+            </div>
+
+            <img
+                src={categories[4].image}
+                alt={categories[4].name}
+                className="
+                    absolute
+                    w-[70%]
+                    right-[0%]
+                    bottom-[2%]
+                    object-contain
+                    transition-transform duration-700
+                    group-hover:scale-110
+                "
+            />
+        </div>
+
+
+        {/* Computers */}
+        <div className="
+            group relative overflow-hidden
+            min-h-[380px]
+            rounded-3xl
+            border border-gray-200
+            bg-gray-50
+            cursor-pointer
+            transition-all duration-500
+            hover:shadow-xl
+            hover:-translate-y-1
+        ">
+            <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+
+                <div>
+                    <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">
+                        Computers
+                    </p>
+
+                    <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                        Power Your Setup.
+                    </h3>
+
+                    <p className="mt-2 text-sm text-gray-500 max-w-[220px]">
+                        Build a clean, powerful workspace made for your workflow.
+                    </p>
+                </div>
+
+                <div className="
+                    w-10 h-10
+                    rounded-full
+                    bg-white
+                    border border-gray-200
+                    flex items-center justify-center
+                    text-lg
+                    transition-transform duration-300
+                    group-hover:translate-x-1
+                ">
+                    →
+                </div>
+            </div>
+
+            <img
+                src={categories[3].image}
+                alt={categories[3].name}
+                className="
+                    absolute
+                    w-[78%]
+                    right-[-8%]
+                    bottom-[0%]
+                    object-contain
+                    transition-transform duration-700
+                    group-hover:scale-110
+                "
+            />
+        </div>
+
+    </div>
+</section>
+
+
+{/* Techora AI Support */}
+<section className="sticky top-0 w-full max-w-7xl mx-auto mt-24 px-4 sm:px-6 lg:px-0">
+    <div
+        className="
+            relative overflow-hidden
+            rounded-3xl
+            border border-gray-200
+            bg-gray-50
+            px-6 py-14
+            sm:px-10 sm:py-16
+            md:px-16 md:py-20
+            text-center
+        "
+    >
+
+        {/* Decorative background */}
+        <div className="
+            pointer-events-none
+            absolute
+            -top-20
+            left-1/2
+            -translate-x-1/2
+            w-72 h-72
+            rounded-full
+            bg-blue-100/60
+            blur-3xl
+        " />
+
+        <div className="relative z-10 mx-auto max-w-2xl">
+
+            <p className="
+                text-xs
+                font-semibold
+                tracking-[0.2em]
+                uppercase
+                text-blue-500
+            ">
+                Techora Support
+            </p>
+
+            <h2 className="
+                mt-3
+                text-3xl
+                sm:text-4xl
+                md:text-5xl
+                font-bold
+                tracking-tight
+            ">
+                Not sure what to buy?
+            </h2>
+
+            <p className="
+                mt-4
+                text-sm
+                sm:text-base
+                leading-relaxed
+                text-gray-500
+                max-w-xl
+                mx-auto
+            ">
+                Tell us what you need and get personalized help
+                finding the right technology for your setup.
+            </p>
+
+            {/* Chatbot Button */}
+            <button
+                type="button"
+                onClick={() => console.log("Open Techora AI")}
+                className="
+                    mt-8
+                    inline-flex
+                    items-center
+                    justify-center
+                    gap-3
+                    rounded-full
+                    bg-blue-500
+                    px-7
+                    py-3
+                    text-sm
+                    font-semibold
+                    text-white
+                    shadow-sm
+                    transition-all
+                    duration-300
+                    hover:bg-blue-600
+                    hover:shadow-lg
+                    hover:-translate-y-0.5
+                    active:translate-y-0
+                "
+            >
+                <span className="text-base">✦</span>
+                Ask Techora AI
+                <span
+                    className="
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                    "
+                >
+                    →
+                </span>
+            </button>
+
+            <p className="mt-4 text-[11px] text-gray-400">
+                Shopping help • Product recommendations • Support
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
 </main>
 }
