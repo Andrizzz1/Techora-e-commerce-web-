@@ -42,7 +42,7 @@ export const NavBar = () => {
       />
 
       <div className="relative shadow-md z-50 bg-[#F5F5F7] flex justify-around text-xs max-md:hidden">
-        <img className="w-15" src="./imgs/logo.png" alt="logo" />
+        <img className="w-24" src="./imgs/logo.png" alt="logo" />
         {/*options */}
         <div className="flex items-center gap-10">
           <p onClick={()=>setSelectedNav("home")} className={`cursor-pointer ${selectedNav === "home"? "text-blue-600 underline underline-offset-4 ":null}`}>HOME</p>
