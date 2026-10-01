@@ -1,6 +1,6 @@
 import { Search, ShoppingCart } from "lucide-react";
 import { useState } from "react";
-
+import {useNavigate} from "react-router-dom";
 type OptionData = {
   id: number;
   title: String;
@@ -32,6 +32,7 @@ const ShopOptionsData: OptionData[] = [
 export const NavBar = () => {
   const [activeMenu, setActiveMenu] = useState(false);
   const [selectedNav, setSelectedNav] = useState('home')
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -45,7 +46,7 @@ export const NavBar = () => {
         <img className="w-24" src="./imgs/logo.png" alt="logo" />
         {/*options */}
         <div className="flex items-center gap-10">
-          <p onClick={()=>setSelectedNav("home")} className={`cursor-pointer ${selectedNav === "home"? "text-blue-600 underline underline-offset-4 ":null}`}>HOME</p>
+          <p onClick={()=>{setSelectedNav("home"); navigate('/');}} className={`cursor-pointer ${selectedNav === "home"? "text-blue-600 underline underline-offset-4 ":null}`}>HOME</p>
           <p
             className="cursor-pointer hover:text-blue-600"
             onMouseEnter={() => setActiveMenu(true)}
