@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors'
 import pg from 'pg'
 import dotenv from "dotenv";
-
+import bcrypt from 'bcrypt'
 dotenv.config();
 const app = express()
 app.use(express.json());
@@ -25,7 +25,7 @@ let currentDeals: any[] = [];
 let dealsExpireAt = 0;
 
 const DEAL_DURATION = 24 * 60 * 60 * 1000;
-
+const saltRounds = 10;
 // app.get('products',async(req,res)=>{
 
 // })
@@ -67,6 +67,45 @@ app.get('/RefreshDeals',async (req,res)=>{
    }
 })
 
+
+app.post('/register',async(req,res)=>{
+    const {firstName,lastName,email,mobile,password} = req.body;
+    try{
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const data = await db.query('SELECT * FROM users WHERE email = $1',[email])
+        if(data.rows.length>0){
+            return res.status(400).json({message:'User already exists'})
+        }
+        const result = await db.query(`
+            INSERT INTO users (first_name, last_name, email, mobile_number, password_hashed)
+            VALUES ($1, $2, $3, $4, $5)
+            RETURNING id, first_name, last_name, email
+        `,[firstName,lastName,email,mobile,hashedPassword])
+        res.status(201).json({user:result.rows[0]})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:'Failed to register user'})
+    }
+})
+
+app.post('/login',async(req,res)=>{
+    const {email,password} = req.body;
+    try{
+        const data = await db.query('SELECT * FROM users WHERE email = $1',[email])
+        if(data.rows.length===0){
+            return res.status(400).json({message:'Invalid credentials'})
+        }
+        const user = data.rows[0];
+        const isMatch = await bcrypt.compare(password, user.password_hashed);
+        if(!isMatch){
+            return res.status(400).json({message:'Invalid credentials'})
+        }
+        res.status(200).json({user:{id:user.id, firstName:user.first_name, lastName:user.last_name, email:user.email}})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({message:'Failed to login user'})
+    }
+})
 app.listen(port,()=>{
     console.log("Listing in Port:"+ port)
 })

@@ -6,6 +6,8 @@ type Deals={
     discountedPrice:number
 }
 
+const formatPrice = (price: number) => price.toLocaleString("en-PH");
+
 export function DealsofTheDay({sourceImg,altimg,title,OriginalPrice,discountedPrice}:Deals){
     return<>
         <div className="flex gap-2 max-md:grid max-md:grid-cols-1 cursor-pointer 
@@ -18,9 +20,9 @@ export function DealsofTheDay({sourceImg,altimg,title,OriginalPrice,discountedPr
             </div>
             <div className="flex flex-col justify-center col-span-1 max-md:items-center">
                 <p className="text-2xl font-bold max-sm:text-sm">{title}</p>
-                <p className="text-sm"><span className="text-gray-400 text-xs">₱{OriginalPrice}</span> ₱{discountedPrice}</p>
+                <p className="text-sm"><span className="text-gray-400 text-xs">₱{formatPrice(OriginalPrice)}</span> ₱{formatPrice(discountedPrice)}</p>
             </div>
         </div>
     </>
 
-} 
+}

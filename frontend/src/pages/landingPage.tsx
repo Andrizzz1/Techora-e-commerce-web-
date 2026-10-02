@@ -38,6 +38,8 @@ type newDeal = {
   discounr_percent: number;
 };
 
+const formatPrice = (price: number) => price.toLocaleString("en-PH");
+
 const services: service[] = [
   {
     name: "Free Services",
@@ -405,7 +407,7 @@ export const LandingPage = () => {
             </div>
             <div className="mt-4 flex flex-1 flex-col">
               <p className="h-10 leading-5 line-clamp-2 text-sm">{item.name}</p>
-              <p className="font-semibold">₱{item.price}</p>
+              <p className="font-semibold">₱{formatPrice(item.price)}</p>
             </div>
             </div>
           ))}
@@ -437,7 +439,7 @@ export const LandingPage = () => {
               </div>
               <div className="mt-4 flex flex-1 flex-col">
               <p className="h-10 overflow-hidden text-sm leading-5 line-clamp-2">{item.name}</p>
-              <p className="font-semibold">₱{item.price}</p>
+              <p className="font-semibold">₱{formatPrice(item.price)}</p>
               </div>
             </div>
           ))}

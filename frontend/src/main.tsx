@@ -11,6 +11,8 @@ import {ReturnAndRefundPolicy} from './pages/Returnandrefundpolicy.tsx'
 import {PrivacyPolicy} from './pages/Privacypolicy.tsx'
 import {TermsAndConditions} from './pages/Termsandconditions.tsx'
 import {AboutUs} from './pages/Aboutus.tsx'
+import {Login} from './pages/Login.tsx'
+import {Register} from './pages/Register.tsx'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation()
@@ -35,6 +37,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
